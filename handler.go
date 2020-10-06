@@ -81,7 +81,6 @@ func buildMap(data []PathUrl) map[string]string {
 	return output
 }
 
-//TODO: maphandler to build a map
 func JSONHandler(data []byte) map[string]string {
 	// output := make(map[string]string)
 
