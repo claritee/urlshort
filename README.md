@@ -54,4 +54,17 @@ go build
 go run main/main.go
 ```
 
-Hints: https://github.com/gophercises/urlshort/issues/10
+### Notes
+
+Find a key `"foo"` in a map
+
+```
+if val, ok := dict["foo"]; ok {
+    //do something here
+}
+```
+
+Hints: 
+
+* https://github.com/gophercises/urlshort/issues/10
+* https://www.alexedwards.net/blog/making-and-using-middleware

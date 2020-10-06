@@ -17,8 +17,13 @@ func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.Handl
  //    	w.Write([]byte("hello"))
  //  	})
 
+	// See: https://www.alexedwards.net/blog/making-and-using-middleware
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	    // Our middleware logic goes here...
+	    path := r.URL.Path
+		if url, ok := pathsToUrls[path]; ok {
+    		http.Redirect(w, r, url, http.StatusFound)
+			return
+		}
 	    fallback.ServeHTTP(w, r)
 	})
 }
