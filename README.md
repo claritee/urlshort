@@ -74,3 +74,4 @@ Hints:
 
 * https://github.com/gophercises/urlshort/issues/10
 * https://www.alexedwards.net/blog/making-and-using-middleware
+* https://golangbot.com/read-files/
