@@ -54,6 +54,12 @@ go build
 go run main/main.go
 ```
 
+
+Part 2:
+```
+go get gopkg.in/yaml.v2
+```
+
 ### Notes
 
 Find a key `"foo"` in a map
