@@ -1,6 +1,7 @@
 package urlshort
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"gopkg.in/yaml.v2"
@@ -80,6 +81,28 @@ func buildMap(data []PathUrl) map[string]string {
 	return output
 }
 
+//TODO: maphandler to build a map
+func JSONHandler(data []byte) map[string]string {
+	// output := make(map[string]string)
+
+	var jsonData []PathUrlJson
+	json.Unmarshal(data, &jsonData)
+
+	output := buildJsonMap(jsonData)
+
+	fmt.Println("JSON version")
+	fmt.Println(output)
+	return output
+}
+
+func buildJsonMap(data []PathUrlJson) map[string]string {
+	output := make(map[string]string)
+	for _, pathUrl := range data {
+    	output[pathUrl.Path] = pathUrl.Url 
+	}
+	return output
+}
+
 // https://godoc.org/gopkg.in/yaml.v2
 // - path: /urlshort
 //   url: https://github.com/gophercises/urlshort
@@ -88,4 +111,9 @@ func buildMap(data []PathUrl) map[string]string {
 type PathUrl struct {
     Path string `yaml:"path"`
     Url string `yaml:"url"`
+}
+
+type PathUrlJson struct {
+	Path string `json:"path"`
+    Url string `json:"url"`
 }

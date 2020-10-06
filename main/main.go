@@ -40,6 +40,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	// json version
+	json, err := ioutil.ReadFile("input.json")
+	if err != nil {
+        fmt.Println("File reading error", err)
+        return
+    }
+    urlshort.JSONHandler(json)
+
 	fmt.Println("Starting the server on :8080")
 	http.ListenAndServe(":8080", yamlHandler)
 }
