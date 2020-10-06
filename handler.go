@@ -69,7 +69,15 @@ func parseYAML(data []byte) ([]PathUrl, error) {
 }
 
 func buildMap(data []PathUrl) map[string]string {
-	return make(map[string]string)
+	output := make(map[string]string)
+	for _, pathUrl := range data {
+		// fmt.Println(pathUrl.Path)
+  //   	fmt.Println(pathUrl.Url)
+    	output[pathUrl.Path] = pathUrl.Url 
+    	// fmt.Println(output[pathUrl.Path])
+	}
+	fmt.Println(output)
+	return output
 }
 
 // https://godoc.org/gopkg.in/yaml.v2
